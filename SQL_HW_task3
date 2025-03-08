@@ -1,1 +1,11 @@
-
+/* задание 3 "Вывод наиболее популярных продуктов по количеству заказов" */
+SELECT pr.ProductName, 
+       SUM(od.Quantity) as total_quantity
+FROM
+    OrderDetails od
+JOIN
+    Products pr on od.ProductID = pr.ProductID
+GROUP BY
+        pr.ProductName
+ORDER BY
+        total_quantity DESC

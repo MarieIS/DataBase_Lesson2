@@ -1,1 +1,11 @@
-
+/* задание 2 "Анализ частоты заказа продуктов по категориям" */
+SELECT pr.CategoryID, 
+       COUNT(DISTINCT od.OrderID) as order_count
+FROM
+    OrderDetails od
+JOIN
+    Products pr on od.ProductID = pr.ProductID
+GROUP BY
+        pr.CategoryID
+ORDER BY
+        order_count DESC

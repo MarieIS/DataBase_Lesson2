@@ -1,1 +1,12 @@
-
+/* задание 1 "Анализ влияния категорий продуктов на общий доход" */
+SELECT pr.CategoryID, 
+       SUM(od.Quantity) as total_quantity,
+       SUM(od.Quantity * pr.Price) as total_revenue
+FROM
+    OrderDetails od
+JOIN
+    Products pr ON od.ProductID = pr.ProductID
+GROUP BY 
+        pr.CategoryID
+ORDER BY 
+        total_revenue DESC
